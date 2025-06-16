@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AppKit
 
 struct GlassBackground: View {
     var body: some View {
@@ -31,8 +32,10 @@ struct MouseBlockerView: NSViewRepresentable {
     func makeNSView(context: Context) -> NSView {
         let view = NSView()
         view.wantsLayer = true
-        view.layer?.backgroundColor = NSColor.clear.cgColor
+        view.layer?.backgroundColor = NSColor.black.withAlphaComponent(1.0).cgColor
         view.addTrackingArea(NSTrackingArea(rect: .infinite, options: [.activeAlways, .mouseEnteredAndExited, .mouseMoved], owner: view, userInfo: nil))
+        view.acceptsTouchEvents = true
+        view.acceptsFirstResponder
         return view
     }
     func updateNSView(_ nsView: NSView, context: Context) {}
@@ -66,76 +69,134 @@ struct ContentView: View {
     @State private var unlockTimer: Timer? = nil
     @State private var eventMonitor: Any? = nil
     @Namespace private var lockTransition
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var checklist: [GestureSetting] = GestureSetting.defaultChecklist
+    @State private var showChecklist: Bool = true
+    @State private var unlockProgress: Double = 0.0
+    private let unlockDuration: Double = 5.0
 
     var body: some View {
         ZStack {
-            Color(NSColor.windowBackgroundColor)
+            Color.white
                 .ignoresSafeArea()
             if isLocked {
-                GlassBackground()
-                    .transition(.opacity)
+                // Jony Ive style: pure focus, no icons, no gradients, just text
                 MouseBlockerView()
                     .ignoresSafeArea()
-                VStack(spacing: 32) {
+                VStack {
                     Spacer()
                     ZStack {
                         Circle()
-                            .fill(Color.accentColor.opacity(0.18))
-                            .frame(width: 160, height: 160)
-                            .blur(radius: 2)
-                        Image(systemName: "lock.fill")
-                            .font(.system(size: 72, weight: .bold))
-                            .foregroundColor(.accentColor)
-                            .shadow(color: Color.accentColor.opacity(0.5), radius: 18, y: 4)
+                            .stroke(Color.white.opacity(0.18), lineWidth: 16)
+                            .frame(width: 90, height: 90)
+                        Circle()
+                            .trim(from: 0, to: unlockProgress)
+                            .stroke(Color.accentColor, style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                            .rotationEffect(.degrees(-90))
+                            .frame(width: 90, height: 90)
+                            .animation(.linear(duration: 0.1), value: unlockProgress)
                     }
-                    .matchedGeometryEffect(id: "lockIcon", in: lockTransition)
-                    Text("Cleaning Mode Enabled")
-                        .font(.system(size: 38, weight: .semibold, design: .rounded))
-                        .foregroundColor(.primary)
-                        .shadow(color: Color.black.opacity(0.08), radius: 2, y: 1)
-                    Text("Hold ⌘ for 5 seconds to disable")
-                        .font(.title3)
-                        .foregroundColor(.secondary)
-                        .padding(.top, 4)
+                    .padding(.bottom, 24)
+                    Text("Hold ⌘ for 5 seconds to exit Cleaning Mode.")
+                        .font(.system(size: 22, weight: .regular, design: .rounded))
+                        .foregroundColor(Color.white.opacity(0.82))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 32)
+                        .shadow(color: Color.black.opacity(0.18), radius: 8, y: 2)
                     Spacer()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.black.opacity(0.85))
+                .background(Color.black)
                 .ignoresSafeArea()
                 .onAppear {
                     withAnimation(.easeInOut(duration: 0.4)) {}
                     NSCursor.hide()
                     startMonitoring()
                     enterFullScreen()
+                    disableWindowCloseButton(true)
                 }
                 .onDisappear {
                     NSCursor.unhide()
                     stopMonitoring()
                     exitFullScreen()
+                    disableWindowCloseButton(false)
+                }
+                .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+                    if isLocked {
+                        enterFullScreen()
+                        NSCursor.hide()
+                    }
                 }
             } else {
-                VStack(spacing: 36) {
+                VStack(spacing: 0) {
                     Spacer()
-                    ZStack {
-                        Circle()
-                            .fill(Color.accentColor.opacity(0.10))
-                            .frame(width: 120, height: 120)
-                        Image(systemName: "lock.open.fill")
-                            .font(.system(size: 56, weight: .bold))
-                            .foregroundColor(.accentColor)
-                            .shadow(color: Color.accentColor.opacity(0.3), radius: 8, y: 2)
+                    VStack(alignment: .center, spacing: 28) {
+                        Text("Cleaning Mode")
+                            .font(.system(size: 28, weight: .bold, design: .rounded))
+                            .padding(.top, 32)
+                        Text("Enable Cleaning Mode to safely clean your MacBook without accidental input.")
+                            .font(.title3)
+                            .foregroundColor(.secondary)
+                        Divider().padding(.vertical, 2)
+                        Text("What happens when you enable Cleaning Mode:")
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                        VStack(alignment: .center, spacing: 12) {
+                            Label("All keyboard and mousepad input is blocked", systemImage: "lock.fill")
+                                .font(.body)
+                                .foregroundColor(.primary)
+                            Label("Screen goes fully black", systemImage: "display")
+                                .font(.body)
+                                .foregroundColor(.primary)
+                            Label("Exit by holding ⌘ for 5 seconds", systemImage: "command")
+                                .font(.body)
+                                .foregroundColor(.primary)
+                        }
+                        Divider().padding(.vertical, 2)
+                        Text("For the strictest lock, you can temporarily disable trackpad gestures in System Settings > Trackpad > More Gestures.")
+                            .font(.footnote)
+                            .foregroundColor(Color.secondary.opacity(0.7))
+                        Image("trackpad_gestures")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 340)
+                            .cornerRadius(18)
+                            .shadow(color: Color.black.opacity(0.18), radius: 16, y: 6)
+                        Button(action: openTrackpadSettings) {
+                            Text("Open Trackpad Settings")
+                                .font(.system(size: 15, weight: .medium, design: .rounded))
+                                .foregroundColor(.accentColor)
+                                .padding(.vertical, 6)
+                                .padding(.horizontal, 18)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                        .fill(Color.accentColor.opacity(0.10))
+                                )
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .padding(.bottom, 24)
                     }
-                    .matchedGeometryEffect(id: "lockIcon", in: lockTransition)
+                    .frame(maxWidth: 520)
+                    .frame(minHeight: 600)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+                    Spacer()
                     Button(action: { withAnimation(.easeInOut(duration: 0.4)) { isLocked = true } }) {
-                        Text("Lock My Screen")
-                            .font(.system(size: 32, weight: .bold, design: .rounded))
+                        Text("Enable Cleaning Mode")
+                            .font(.system(size: 22, weight: .semibold, design: .rounded))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 48)
+                            .padding(.vertical, 18)
+                            .background(
+                                Capsule()
+                                    .fill(Color.accentColor)
+                            )
+                            .scaleEffect(isLocked ? 0.98 : 1.0)
+                            .animation(.spring(response: 0.35, dampingFraction: 0.7), value: isLocked)
                     }
-                    .buttonStyle(AppleButtonStyle())
-                    Text("Hold ⌘ for 5 seconds to disable")
-                        .font(.title3)
-                        .foregroundColor(.secondary)
-                        .padding(.top, 4)
-                    Spacer()
+                    .buttonStyle(PlainButtonStyle())
+                    .padding(.top, 32)
+                    .padding(.bottom, 32)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
@@ -149,19 +210,28 @@ struct ContentView: View {
             if event.modifierFlags.contains(.command) {
                 if cmdHeldStart == nil {
                     cmdHeldStart = Date()
-                    unlockTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
-                        withAnimation(.easeInOut(duration: 0.4)) {
-                            isLocked = false
+                    unlockProgress = 0.0
+                    unlockTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
+                        if let start = cmdHeldStart {
+                            let elapsed = min(Date().timeIntervalSince(start), unlockDuration)
+                            unlockProgress = elapsed / unlockDuration
+                            if elapsed >= unlockDuration {
+                                withAnimation(.easeInOut(duration: 0.4)) {
+                                    isLocked = false
+                                }
+                                cmdHeldStart = nil
+                                unlockTimer?.invalidate()
+                                unlockTimer = nil
+                                unlockProgress = 0.0
+                            }
                         }
-                        cmdHeldStart = nil
-                        unlockTimer?.invalidate()
-                        unlockTimer = nil
                     }
                 }
             } else {
                 cmdHeldStart = nil
                 unlockTimer?.invalidate()
                 unlockTimer = nil
+                unlockProgress = 0.0
             }
             return event
         }
@@ -192,8 +262,42 @@ struct ContentView: View {
             }
         }
     }
+
+    private func openTrackpadSettings() {
+        let url = URL(string: "x-apple.systempreferences:com.apple.Trackpad-Settings.extension")
+        if let url = url {
+            NSWorkspace.shared.open(url)
+        }
+    }
+
+    private func disableWindowCloseButton(_ disabled: Bool) {
+        DispatchQueue.main.async {
+            if let window = NSApplication.shared.windows.first {
+                window.standardWindowButton(.closeButton)?.isEnabled = !disabled
+                window.standardWindowButton(.miniaturizeButton)?.isEnabled = !disabled
+                window.standardWindowButton(.zoomButton)?.isEnabled = !disabled
+            }
+        }
+    }
 }
 
 #Preview {
     ContentView()
+}
+
+// NOTE: macOS does not allow blocking of system gestures (Mission Control, Launchpad, swipe gestures) from sandboxed apps. This is a system security feature and cannot be bypassed with public APIs.
+
+// Checklist model for gesture settings
+struct GestureSetting: Identifiable {
+    let id = UUID()
+    let title: String
+    var completed: Bool
+
+    static let defaultChecklist: [GestureSetting] = [
+        GestureSetting(title: "Disable \"Swipe between full-screen applications\"", completed: false),
+        GestureSetting(title: "Disable \"Mission Control\" gesture", completed: false),
+        GestureSetting(title: "Disable \"App Exposé\" gesture", completed: false),
+        GestureSetting(title: "Disable \"Launchpad\" gesture", completed: false),
+        GestureSetting(title: "Disable \"Show Desktop\" gesture", completed: false)
+    ]
 }
