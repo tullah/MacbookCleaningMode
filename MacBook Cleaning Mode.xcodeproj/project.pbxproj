@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		F325FE842E006EC300C9978E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F325FE682E006EC100C9978E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F325FE6F2E006EC100C9978E;
+			remoteInfo = "MacBook Cleaning Mode";
+		};
+		F325FE8E2E006EC300C9978E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F325FE682E006EC100C9978E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F325FE6F2E006EC100C9978E;
+			remoteInfo = "MacBook Cleaning Mode";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F325FE702E006EC100C9978E /* MacBook Cleaning Mode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MacBook Cleaning Mode.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F325FE832E006EC300C9978E /* MacBook Cleaning ModeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MacBook Cleaning ModeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F325FE8D2E006EC300C9978E /* MacBook Cleaning ModeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MacBook Cleaning ModeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F325FE722E006EC100C9978E /* MacBook Cleaning Mode */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "MacBook Cleaning Mode";
+			sourceTree = "<group>";
+		};
+		F325FE862E006EC300C9978E /* MacBook Cleaning ModeTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "MacBook Cleaning ModeTests";
+			sourceTree = "<group>";
+		};
+		F325FE902E006EC300C9978E /* MacBook Cleaning ModeUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "MacBook Cleaning ModeUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F325FE6D2E006EC100C9978E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F325FE802E006EC300C9978E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F325FE8A2E006EC300C9978E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F325FE672E006EC100C9978E = {
+			isa = PBXGroup;
+			children = (
+				F325FE722E006EC100C9978E /* MacBook Cleaning Mode */,
+				F325FE862E006EC300C9978E /* MacBook Cleaning ModeTests */,
+				F325FE902E006EC300C9978E /* MacBook Cleaning ModeUITests */,
+				F325FE712E006EC100C9978E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F325FE712E006EC100C9978E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F325FE702E006EC100C9978E /* MacBook Cleaning Mode.app */,
+				F325FE832E006EC300C9978E /* MacBook Cleaning ModeTests.xctest */,
+				F325FE8D2E006EC300C9978E /* MacBook Cleaning ModeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F325FE6F2E006EC100C9978E /* MacBook Cleaning Mode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F325FE972E006EC300C9978E /* Build configuration list for PBXNativeTarget "MacBook Cleaning Mode" */;
+			buildPhases = (
+				F325FE6C2E006EC100C9978E /* Sources */,
+				F325FE6D2E006EC100C9978E /* Frameworks */,
+				F325FE6E2E006EC100C9978E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F325FE722E006EC100C9978E /* MacBook Cleaning Mode */,
+			);
+			name = "MacBook Cleaning Mode";
+			packageProductDependencies = (
+			);
+			productName = "MacBook Cleaning Mode";
+			productReference = F325FE702E006EC100C9978E /* MacBook Cleaning Mode.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F325FE822E006EC300C9978E /* MacBook Cleaning ModeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F325FE9A2E006EC300C9978E /* Build configuration list for PBXNativeTarget "MacBook Cleaning ModeTests" */;
+			buildPhases = (
+				F325FE7F2E006EC300C9978E /* Sources */,
+				F325FE802E006EC300C9978E /* Frameworks */,
+				F325FE812E006EC300C9978E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F325FE852E006EC300C9978E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F325FE862E006EC300C9978E /* MacBook Cleaning ModeTests */,
+			);
+			name = "MacBook Cleaning ModeTests";
+			packageProductDependencies = (
+			);
+			productName = "MacBook Cleaning ModeTests";
+			productReference = F325FE832E006EC300C9978E /* MacBook Cleaning ModeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F325FE8C2E006EC300C9978E /* MacBook Cleaning ModeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F325FE9D2E006EC300C9978E /* Build configuration list for PBXNativeTarget "MacBook Cleaning ModeUITests" */;
+			buildPhases = (
+				F325FE892E006EC300C9978E /* Sources */,
+				F325FE8A2E006EC300C9978E /* Frameworks */,
+				F325FE8B2E006EC300C9978E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F325FE8F2E006EC300C9978E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F325FE902E006EC300C9978E /* MacBook Cleaning ModeUITests */,
+			);
+			name = "MacBook Cleaning ModeUITests";
+			packageProductDependencies = (
+			);
+			productName = "MacBook Cleaning ModeUITests";
+			productReference = F325FE8D2E006EC300C9978E /* MacBook Cleaning ModeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F325FE682E006EC100C9978E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					F325FE6F2E006EC100C9978E = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					F325FE822E006EC300C9978E = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = F325FE6F2E006EC100C9978E;
+					};
+					F325FE8C2E006EC300C9978E = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = F325FE6F2E006EC100C9978E;
+					};
+				};
+			};
+			buildConfigurationList = F325FE6B2E006EC100C9978E /* Build configuration list for PBXProject "MacBook Cleaning Mode" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F325FE672E006EC100C9978E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F325FE712E006EC100C9978E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F325FE6F2E006EC100C9978E /* MacBook Cleaning Mode */,
+				F325FE822E006EC300C9978E /* MacBook Cleaning ModeTests */,
+				F325FE8C2E006EC300C9978E /* MacBook Cleaning ModeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F325FE6E2E006EC100C9978E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F325FE812E006EC300C9978E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F325FE8B2E006EC300C9978E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F325FE6C2E006EC100C9978E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F325FE7F2E006EC300C9978E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F325FE892E006EC300C9978E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F325FE852E006EC300C9978E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F325FE6F2E006EC100C9978E /* MacBook Cleaning Mode */;
+			targetProxy = F325FE842E006EC300C9978E /* PBXContainerItemProxy */;
+		};
+		F325FE8F2E006EC300C9978E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F325FE6F2E006EC100C9978E /* MacBook Cleaning Mode */;
+			targetProxy = F325FE8E2E006EC300C9978E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F325FE952E006EC300C9978E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4D3C7D49NZ;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F325FE962E006EC300C9978E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4D3C7D49NZ;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		F325FE982E006EC300C9978E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MacBook Cleaning Mode/MacBook_Cleaning_Mode.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4D3C7D49NZ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MacBookCleaningMode.MacBook-Cleaning-Mode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F325FE992E006EC300C9978E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MacBook Cleaning Mode/MacBook_Cleaning_Mode.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4D3C7D49NZ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MacBookCleaningMode.MacBook-Cleaning-Mode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F325FE9B2E006EC300C9978E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4D3C7D49NZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MacBookCleaningMode.MacBook-Cleaning-ModeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacBook Cleaning Mode.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MacBook Cleaning Mode";
+			};
+			name = Debug;
+		};
+		F325FE9C2E006EC300C9978E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4D3C7D49NZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MacBookCleaningMode.MacBook-Cleaning-ModeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacBook Cleaning Mode.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MacBook Cleaning Mode";
+			};
+			name = Release;
+		};
+		F325FE9E2E006EC300C9978E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4D3C7D49NZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MacBookCleaningMode.MacBook-Cleaning-ModeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "MacBook Cleaning Mode";
+			};
+			name = Debug;
+		};
+		F325FE9F2E006EC300C9978E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4D3C7D49NZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MacBookCleaningMode.MacBook-Cleaning-ModeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "MacBook Cleaning Mode";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F325FE6B2E006EC100C9978E /* Build configuration list for PBXProject "MacBook Cleaning Mode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F325FE952E006EC300C9978E /* Debug */,
+				F325FE962E006EC300C9978E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F325FE972E006EC300C9978E /* Build configuration list for PBXNativeTarget "MacBook Cleaning Mode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F325FE982E006EC300C9978E /* Debug */,
+				F325FE992E006EC300C9978E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F325FE9A2E006EC300C9978E /* Build configuration list for PBXNativeTarget "MacBook Cleaning ModeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F325FE9B2E006EC300C9978E /* Debug */,
+				F325FE9C2E006EC300C9978E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F325FE9D2E006EC300C9978E /* Build configuration list for PBXNativeTarget "MacBook Cleaning ModeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F325FE9E2E006EC300C9978E /* Debug */,
+				F325FE9F2E006EC300C9978E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F325FE682E006EC100C9978E /* Project object */;
+}
