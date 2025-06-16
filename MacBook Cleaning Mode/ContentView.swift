@@ -98,11 +98,11 @@ struct ContentView: View {
                     }
                     .padding(.bottom, 24)
                     Text("Hold ⌘ for 5 seconds to exit Cleaning Mode.")
-                        .font(.system(size: 22, weight: .regular, design: .rounded))
-                        .foregroundColor(Color.white.opacity(0.82))
+                        .font(.system(size: 15, weight: .regular, design: .rounded))
+                        .foregroundColor(Color.white.opacity(0.45))
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
-                        .shadow(color: Color.black.opacity(0.18), radius: 8, y: 2)
+                        .padding(.top, 8)
                     Spacer()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -130,55 +130,48 @@ struct ContentView: View {
             } else {
                 VStack(spacing: 0) {
                     Spacer()
-                    VStack(alignment: .center, spacing: 28) {
-                        Text("Cleaning Mode")
-                            .font(.system(size: 28, weight: .bold, design: .rounded))
-                            .padding(.top, 32)
-                        Text("Enable Cleaning Mode to safely clean your MacBook without accidental input.")
-                            .font(.title3)
-                            .foregroundColor(.secondary)
-                        Divider().padding(.vertical, 2)
-                        Text("What happens when you enable Cleaning Mode:")
-                            .font(.headline)
-                            .foregroundColor(.primary)
-                        VStack(alignment: .center, spacing: 12) {
-                            Label("All keyboard and mousepad input is blocked", systemImage: "lock.fill")
-                                .font(.body)
+                    HStack(alignment: .center, spacing: 48) {
+                        VStack(alignment: .center, spacing: 28) {
+                            Text("MacBook Cleaning Mode")
+                                .font(.system(size: 28, weight: .bold, design: .rounded))
+                                .padding(.top, 8)
+                            Text("Safely clean your MacBook without accidental input.")
+                                .font(.title3)
+                                .foregroundColor(.secondary)
+                            Divider().padding(.vertical, 2)
+                            Text("What happens when you enable Cleaning Mode:")
+                                .font(.headline)
                                 .foregroundColor(.primary)
-                            Label("Screen goes fully black", systemImage: "display")
-                                .font(.body)
-                                .foregroundColor(.primary)
-                            Label("Exit by holding ⌘ for 5 seconds", systemImage: "command")
-                                .font(.body)
-                                .foregroundColor(.primary)
+                            HStack(spacing: 24) {
+                                InfoCard(icon: "lock.fill", text: "All input is blocked")
+                                InfoCard(icon: "display", text: "Screen goes black")
+                                InfoCard(icon: "command", text: "Hold ⌘ for 5s to exit")
+                            }
+                            Divider().padding(.vertical, 2)
                         }
-                        Divider().padding(.vertical, 2)
-                        Text("For the strictest lock, you can temporarily disable trackpad gestures in System Settings > Trackpad > More Gestures.")
-                            .font(.footnote)
-                            .foregroundColor(Color.secondary.opacity(0.7))
-                        Image("trackpad_gestures")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 340)
-                            .cornerRadius(18)
-                            .shadow(color: Color.black.opacity(0.18), radius: 16, y: 6)
-                        Button(action: openTrackpadSettings) {
-                            Text("Open Trackpad Settings")
-                                .font(.system(size: 15, weight: .medium, design: .rounded))
-                                .foregroundColor(.accentColor)
-                                .padding(.vertical, 6)
-                                .padding(.horizontal, 18)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                        .fill(Color.accentColor.opacity(0.10))
-                                )
+                        .frame(maxWidth: 520, alignment: .top)
+                        VStack(spacing: 18) {
+                            ScreenshotZoomable()
+                            Text("For the strictest lock, you can temporarily disable trackpad gestures in System Settings > Trackpad > More Gestures.")
+                                .font(.footnote)
+                                .foregroundColor(Color.secondary.opacity(0.7))
+                                .multilineTextAlignment(.center)
+                            Button(action: openTrackpadSettings) {
+                                Text("Open Trackpad Settings")
+                                    .font(.system(size: 15, weight: .medium, design: .rounded))
+                                    .foregroundColor(.accentColor)
+                                    .padding(.vertical, 6)
+                                    .padding(.horizontal, 18)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                            .fill(Color.accentColor.opacity(0.10))
+                                    )
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
-                        .buttonStyle(PlainButtonStyle())
-                        .padding(.bottom, 24)
+                        .frame(maxWidth: 360, alignment: .top)
+                        .padding(.top, 8)
                     }
-                    .frame(maxWidth: 520)
-                    .frame(minHeight: 600)
-                    .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
                     Spacer()
                     Button(action: { withAnimation(.easeInOut(duration: 0.4)) { isLocked = true } }) {
@@ -300,4 +293,48 @@ struct GestureSetting: Identifiable {
         GestureSetting(title: "Disable \"Launchpad\" gesture", completed: false),
         GestureSetting(title: "Disable \"Show Desktop\" gesture", completed: false)
     ]
+}
+
+// Square card for info
+struct InfoCard: View {
+    let icon: String
+    let text: String
+    var body: some View {
+        VStack(spacing: 12) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(Color(NSColor.controlBackgroundColor))
+                    .frame(width: 64, height: 64)
+                Image(systemName: icon)
+                    .font(.system(size: 28, weight: .semibold))
+                    .foregroundColor(.accentColor)
+            }
+            Text(text)
+                .font(.subheadline)
+                .foregroundColor(.primary)
+                .multilineTextAlignment(.center)
+        }
+        .frame(width: 110, height: 120)
+        .background(Color(NSColor.controlBackgroundColor))
+        .cornerRadius(18)
+    }
+}
+
+// Zoomable screenshot with hover effect
+struct ScreenshotZoomable: View {
+    @State private var isHovered = false
+    var body: some View {
+        Image("trackpad_gestures")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 340)
+            .cornerRadius(18)
+            .shadow(color: Color.black.opacity(0.18), radius: 16, y: 6)
+            .scaleEffect(isHovered ? 1.25 : 1.0)
+            .zIndex(isHovered ? 10 : 0)
+            .animation(.spring(response: 0.35, dampingFraction: 0.7), value: isHovered)
+            .onHover { hovering in
+                isHovered = hovering
+            }
+    }
 }
