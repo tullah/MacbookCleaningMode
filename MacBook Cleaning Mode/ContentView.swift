@@ -27,6 +27,20 @@ struct VisualEffectView: NSViewRepresentable {
     func updateNSView(_ nsView: NSVisualEffectView, context: Context) {}
 }
 
+struct MouseBlockerView: NSViewRepresentable {
+    func makeNSView(context: Context) -> NSView {
+        let view = NSView()
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.clear.cgColor
+        view.addTrackingArea(NSTrackingArea(rect: .infinite, options: [.activeAlways, .mouseEnteredAndExited, .mouseMoved], owner: view, userInfo: nil))
+        return view
+    }
+    func updateNSView(_ nsView: NSView, context: Context) {}
+    static func dismantleNSView(_ nsView: NSView, coordinator: ()) {
+        nsView.trackingAreas.forEach { nsView.removeTrackingArea($0) }
+    }
+}
+
 struct AppleButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -60,6 +74,8 @@ struct ContentView: View {
             if isLocked {
                 GlassBackground()
                     .transition(.opacity)
+                MouseBlockerView()
+                    .ignoresSafeArea()
                 VStack(spacing: 32) {
                     Spacer()
                     ZStack {
@@ -90,10 +106,12 @@ struct ContentView: View {
                     withAnimation(.easeInOut(duration: 0.4)) {}
                     NSCursor.hide()
                     startMonitoring()
+                    enterFullScreen()
                 }
                 .onDisappear {
                     NSCursor.unhide()
                     stopMonitoring()
+                    exitFullScreen()
                 }
             } else {
                 VStack(spacing: 36) {
@@ -157,6 +175,22 @@ struct ContentView: View {
         cmdHeldStart = nil
         unlockTimer?.invalidate()
         unlockTimer = nil
+    }
+
+    private func enterFullScreen() {
+        DispatchQueue.main.async {
+            if let window = NSApplication.shared.windows.first, !window.styleMask.contains(.fullScreen) {
+                window.toggleFullScreen(nil)
+            }
+        }
+    }
+
+    private func exitFullScreen() {
+        DispatchQueue.main.async {
+            if let window = NSApplication.shared.windows.first, window.styleMask.contains(.fullScreen) {
+                window.toggleFullScreen(nil)
+            }
+        }
     }
 }
 
