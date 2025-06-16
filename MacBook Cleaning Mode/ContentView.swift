@@ -35,7 +35,6 @@ struct MouseBlockerView: NSViewRepresentable {
         view.layer?.backgroundColor = NSColor.black.withAlphaComponent(1.0).cgColor
         view.addTrackingArea(NSTrackingArea(rect: .infinite, options: [.activeAlways, .mouseEnteredAndExited, .mouseMoved], owner: view, userInfo: nil))
         view.allowedTouchTypes = [.direct, .indirect]
-        view.acceptsFirstResponder
         return view
     }
     func updateNSView(_ nsView: NSView, context: Context) {}
